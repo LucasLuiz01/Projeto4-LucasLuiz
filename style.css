@@ -72,3 +72,21 @@ height: 100px;
 .disablecard {
     opacity: 0.5;
 }
+@media(max-width : 800px){
+    .menu h1{
+        font-size: 36px;
+    }
+    .menu{
+        align-items: center;
+        justify-content: center;
+    }
+    .corpoCartas {
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        
+    }
+    .card {
+        margin-bottom: 34px;
+    }
+}
