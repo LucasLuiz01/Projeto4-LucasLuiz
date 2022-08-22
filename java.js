@@ -1,5 +1,6 @@
 let firtsCard = "";
 let secondCard = "";
+const item = [];
 //Criando uma variavel com as imagens
 const gits = [
   "fiestaparrot",
@@ -10,19 +11,21 @@ const gits = [
   "tripletsparrot",
   "unicornparrot",
 ];
-
+gits.sort(embaralhar);
+function embaralhar(){
+  return Math.random() -0.5;
+}
 //criando a funcao que gera as cartas
 const lista = document.querySelector(".corpoCartas");
 
 function GeradorCartas(num) {
     if (num < 4 || num > 14 || num % 2 != 0) {
         
-        return GeradorCartas(prompt("qual o numero de cartas?"));
+        return GeradorCartas(prompt("Qual o número de cartas?(Só é possivel escolher números pares, e cartas de 4 a 14)"));
     }
-  let item = "";
-  let contador = 0;
+    let contador = -1;
 
-  while (contador++ < (num/2)) {
+  while (contador++ < ((num/2))-1) {
     let newItem = ` 
     <div class="card" data-character="${gits[contador]}">
         <div class="face front">
@@ -33,12 +36,12 @@ function GeradorCartas(num) {
         </div>
     </div>
     `;
-    item += newItem;
+    item.push(newItem);
   }
 
-  contador = 0;
+  contador = -1;
 
-  while (contador++ < (num/2)) {
+  while (contador++ < ((num/2))-1) {
 
     // random de 0 até num-1
 
@@ -52,9 +55,10 @@ function GeradorCartas(num) {
         </div>
     </div>
     `;
-    item += newItem;
-  }
+    item.push(newItem);
+    item.sort(embaralhar);
 
+  }
   lista.innerHTML = lista.innerHTML + item;
 }
 function checkEndGane() {
@@ -89,7 +93,6 @@ let contador = 0;
 function rotateCard(elemento) {
   const virarcard = elemento.parentNode;
    contador++;
-   console.log(contador);
   //virarcard.classList.add("girar");
 
   if (firtsCard === "") {
@@ -103,4 +106,5 @@ function rotateCard(elemento) {
 }
 
 
-GeradorCartas(prompt("qual o numero de cartas?"));
+GeradorCartas(prompt("Qual o número de cartas?(Só é possivel escolher números pares, e cartas de 4 a 14)"));
+console.log(item);
